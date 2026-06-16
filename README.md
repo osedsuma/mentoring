@@ -1,2 +1,0 @@
-# mentoring
-Mentoring: Feña | Edu
