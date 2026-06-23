@@ -100,8 +100,11 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--ink)
 .sb-notes{width:100%;background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:10px 12px;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--ink);resize:vertical;outline:none;line-height:1.6;min-height:80px}
 .sb-notes:focus{border-color:var(--green-500)}
 .sb-list{display:flex;flex-direction:column;gap:6px}
-.sb-item{font-size:13px;color:var(--ink-2);display:flex;align-items:flex-start;gap:8px;line-height:1.55}
-.sb-item::before{content:'—';color:var(--green-200);flex-shrink:0;margin-top:1px}
+.sb-item{font-size:13px;color:var(--ink-2);line-height:1.65;padding-left:0}
+.sb-item::before{content:'';display:none}
+.sb-item.sb-heading{font-size:12px;font-weight:600;color:var(--green-700);margin-top:10px;padding-top:10px;border-top:1px solid var(--rule)}
+.sb-item.sb-heading::before{content:'';display:none}
+.sb-item.sb-heading:first-child{margin-top:0;padding-top:0;border-top:none}
 
 /* ── TASKS ── */
 .task-filters{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
@@ -455,13 +458,13 @@ const state = {
   ],
   sessions: [
     {
-      num:'S1', title:'Sesión inicial — conocernos y definir el rumbo',
-      date:'Mayo 2026', status:'done',
+      num:'S1', title:'Sesión inicial: Conocernos y definir el rumbo',
+      date:'27 mayo 2026', status:'done',
       points:[
-        'Nos conocimos y conversamos sobre el contexto actual: Feña lleva poco tiempo en el rol y está construyendo su estilo de liderazgo.',
-        'Identificamos los tres objetivos: comunicación con pares, potenciar perfiles senior y dar visibilidad al área.',
-        'Acordamos la estructura del programa: sesiones cada dos semanas, una hora, canal Slack en horario AM.',
-        'Hablamos sobre cómo sacarle el mejor provecho al mentoring: llegar con temas concretos y ser honesta sobre lo que no está funcionando.'
+        'Nos conocimos y conversamos sobre el contexto actual del equipo y de tu rol. Hoy estás en una etapa donde llevas poco tiempo liderando el área, por lo que gran parte del desafío pasa por construir tu propio estilo de liderazgo y encontrar la forma en que quieres relacionarte con el equipo y con tus pares.',
+        'Identificamos tres focos principales para trabajar durante el proceso de mentoring: fortalecer la comunicación con tus pares, desarrollar perfiles con potencial de crecimiento dentro del equipo y aumentar la visibilidad del área hacia el resto de la organización.',
+        'También acordamos la dinámica de trabajo para las próximas semanas: sesiones quincenales de una hora de duración, manteniendo comunicación y seguimiento a través de Slack durante las mañanas cuando sea necesario.',
+        'Por último, conversamos sobre cómo sacar el mayor provecho posible a este espacio. Coincidimos en que las sesiones tendrán más impacto mientras más aterrizados sean los temas que traigas, especialmente aquellas situaciones que te generan dudas, incomodidad o donde sientes que las cosas no están resultando como esperabas. La idea es construir un espacio de confianza donde podamos analizar juntos tanto los avances como los desafíos que vayan apareciendo en el camino.'
       ],
       notes:''
     },
@@ -469,23 +472,23 @@ const state = {
       num:'S2', title:'Comunicación con pares, perfiles senior y visibilidad',
       date:'16 junio 2026', status:'done',
       points:[
-        '— OBJ 1: COMUNICACIÓN CON PARES —',
-        'Hizo la tarea: tuvo los cafés con sus dos stakeholders principales.',
-        'Claudio (Líder de Soporte): conversación amena, cercana y empática. Hablaron primero de temas personales y luego de lo laboral, muy alineado con la forma de trabajar de Feña. Desde esa conversación nota mejor trabajo en equipo.',
-        'Nain (Líder de CS): perfil D en DISC, conversación directa y enfocada en objetivos. Lo más destacable: una semana después fue él quien la volvió a buscar para hablar de mejora de procesos.',
-        'Reflexión trabajada: la comunicación efectiva no requiere cambiar la esencia propia, sino adaptar el estilo según con quién se habla.',
-        'Pendiente para S3: explorar cómo se ve Feña en reuniones con sus pares — si escucha, propone, cede o evita.',
-        '— OBJ 2: POTENCIAR PERFILES SENIOR —',
-        'El equipo tiene 6 personas, ninguna es Senior aún. Revisamos el estado de cada una:',
-        'Cami (Lemonsflow): perfil discreto, trabaja muy bien pero prefiere que no se note. Hay conversación de desarrollo pendiente — Feña siente que tiene que empujarla.',
-        'Yerli (Lemonsflow): volviendo de pre/postnatal, retomando de a poco. No es momento para conversaciones de carrera exigentes.',
-        'Sara (CaseTracking): excelente perfil, usa IA y automatiza todo. En pleno despertar. Riesgo: que llegue a pedir más antes de que se lo ofrezcan. Hay que anticiparse.',
-        'Ambar (CaseTracking): la más antigua. El año pasado tuvo tropiezos en el cómo (no en el qué). Se le asignó un proyecto difícil con un cliente complicado como prueba y lo superó. Tiene aspiraciones de llegar a Senior.',
-        'Javi (CaseTracking): la más junior y nueva, aprendiendo ambos productos. Buena disposición e intención de aprender.',
-        'Ale (CaseTracking): muy buena con clientes, en lo técnico aún en desarrollo. En febrero planteó que su foco son las ventas — en proceso de definir cómo llevar su carrera al área comercial.',
-        '— OBJ 3: VISIBILIDAD DEL ÁREA —',
-        'Está construyendo un dashboard con métricas de alto impacto para presentar en reuniones de comité.',
-        'Tarea asignada: hacer el ejercicio de reconocer al equipo revisando qué ha salido bien y qué no estos últimos meses — sienta las bases de una cultura de mejora continua.'
+        'Comunicación con pares',
+        'Me gustó ver que hiciste la tarea y te diste el tiempo de tener los cafés con tus dos stakeholders principales.',
+        'Con Claudio noté que encontraste un espacio muy natural para relacionarte. Partieron conversando desde lo personal, después pasaron a lo laboral y eso generó una conversación cercana, empática y cómoda para ambos. Da la impresión de que esa instancia ayudó a fortalecer la relación y que desde entonces han trabajado de manera más alineada.',
+        'Con Nain la dinámica fue distinta. Su estilo es mucho más directo, orientado a objetivos y resultados. Lo interesante es que, aun siendo una conversación completamente diferente a la que tuviste con Claudio, también funcionó. De hecho, para mí la mejor señal fue que una semana después él mismo te volvió a buscar para conversar sobre mejoras de procesos.',
+        'Creo que el aprendizaje más importante aquí es que la comunicación efectiva no pasa por cambiar quién eres, sino por entender con quién estás hablando y adaptar la forma sin perder tu esencia.',
+        'Para la próxima sesión me gustaría que reflexionaras sobre cómo te posicionas en reuniones con tus pares. ¿Tiendes más a escuchar o a proponer? ¿Te resulta fácil ceder cuando corresponde? ¿Hay situaciones donde prefieres evitar el conflicto o la conversación incómoda? Creo que ahí hay una oportunidad interesante para seguir creciendo.',
+        'Potenciar perfiles senior',
+        'Conversamos sobre el equipo y el desafío que tienes hoy de empezar a desarrollar referentes, considerando que aún no cuentas con perfiles senior formales dentro de la estructura.',
+        'Con Cami veo un perfil que trabaja muy bien, pero que naturalmente evita la exposición. Da la sensación de que muchas veces necesitará un pequeño empujón para visualizar oportunidades de crecimiento que quizás ella misma no buscaría de forma espontánea.',
+        'Yerli está en una etapa distinta. Después de su regreso, creo que lo importante hoy es acompañar su reintegración y darle espacio para retomar ritmo antes de abrir conversaciones más exigentes respecto a desarrollo de carrera.',
+        'Sara me parece uno de los perfiles con mayor potencial del equipo. Tiene iniciativa, utiliza IA de forma natural, busca automatizar procesos y constantemente está pensando en cómo hacer mejor las cosas. Mi impresión es que está entrando en una etapa de crecimiento acelerado y que vale la pena anticiparse para acompañarla antes de que ella misma empiece a buscar nuevos desafíos fuera de su rol actual.',
+        'Con Ambar veo una evolución interesante respecto al año pasado. Si bien tuvo algunos desafíos relacionados con el cómo, nunca estuvieron en duda sus capacidades. El proyecto complejo que tomó recientemente fue una buena prueba y la superó de manera positiva. Además, ha manifestado interés en crecer, por lo que creo que vale la pena seguir observando cómo evoluciona.',
+        'Javi está todavía en una etapa de aprendizaje. Es la más nueva del equipo y está construyendo bases tanto en los productos como en la dinámica de trabajo. Lo que más destaco hoy es su disposición y ganas de aprender.',
+        'En el caso de Ale, veo una fortaleza muy marcada en la relación con clientes. Su desafío sigue estando en la parte más técnica, pero también ha sido bastante transparente respecto a sus intereses de carrera. Ya manifestó que le atrae más el mundo comercial, por lo que será importante definir juntos cómo canalizar esa motivación y si existe un camino que haga sentido para ella dentro de la organización.',
+        'Visibilidad del área',
+        'Me parece muy positivo que estés avanzando en la construcción de un dashboard con métricas relevantes para presentar en instancias de comité. Es una buena forma de dar visibilidad al trabajo del equipo y conectar la operación con el impacto en el negocio.',
+        'Como siguiente paso, te dejé el ejercicio de revisar los últimos meses e identificar qué cosas han salido bien y cuáles no. Más allá de la información que obtengas, el objetivo es empezar a instalar una dinámica de reconocimiento y aprendizaje continuo dentro del equipo. Creo que eso te puede ayudar no solo a generar mayor visibilidad, sino también a fortalecer una cultura donde las personas entiendan qué se valora, qué debe corregirse y cómo seguir creciendo.'
       ],
       notes:''
     }
@@ -587,7 +590,10 @@ function renderSessions() {
         <div id="sview-${idx}">
           <div class="sb-section">
             <div class="sb-label">${s.status==='draft'?'Temas propuestos':'Puntos tratados'}</div>
-            <div class="sb-list" id="spoints-display-${idx}">${s.points.map(p=>`<div class="sb-item">${p}</div>`).join('')}</div>
+            <div class="sb-list" id="spoints-display-${idx}">${s.points.map(p => {
+            const isHeading = p.length < 60 && !p.endsWith('.') && !p.endsWith('?') && !p.includes('(');
+            return `<div class="sb-item${isHeading?' sb-heading':''}">${p}</div>`;
+          }).join('')}</div>
           </div>
           <div class="sb-section">
             <div class="sb-label">Notas del mentor</div>
@@ -709,7 +715,11 @@ function renderTasks() {
     tr.className = task.status==='done'?'done-row':'';
     tr.innerHTML = `
       <td><div class="status-dot ${task.status}" onclick="cycleStatus(${task.id})" title="Cambiar estado">${statusIcon}</div></td>
-      <td><span class="task-desc">${task.desc}</span></td>
+      <td><span class="task-desc" contenteditable="true"
+        style="outline:none;cursor:text;display:block;border-radius:3px;padding:2px 4px;transition:background 0.15s"
+        onfocus="this.style.background='var(--green-50)'"
+        onblur="this.style.background='';saveTaskDesc(${task.id},this.innerText.trim())"
+      >${task.desc}</span></td>
       <td><span class="resp-badge ${respCls}">${respLabel}</span></td>
       <td><span class="due-date ${isOverdue?'overdue':''}">${dateLabel}</span></td>
       <td><span style="display:flex;align-items:center;gap:4px;font-size:12px;color:var(--ink-2)"><span class="obj-dot" style="background:${dotColor}"></span>${objLabel}</span></td>
@@ -723,6 +733,10 @@ function cycleStatus(id) {
   const cycle = {pending:'done',done:'missed',missed:'pending'};
   task.status = cycle[task.status];
   renderAll();
+}
+function saveTaskDesc(id, val) {
+  const task = state.tasks.find(t=>t.id===id);
+  if(task && val) task.desc = val;
 }
 function filterTasks(f, btn) {
   state.currentFilter = f;
