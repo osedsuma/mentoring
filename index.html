@@ -333,6 +333,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--ink)
           <select id="tf-session">
             <option value="S1">S1</option>
             <option value="S2" selected>S2</option>
+            <option value="S3">S3</option>
           </select>
         </div>
       </div>
@@ -367,7 +368,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--ink)
         </div>
         <div class="fg"><label>Sesión en que se recomendó</label>
           <select id="rf-session">
-            <option>S1</option><option selected>S2</option>
+            <option>S1</option><option selected>S2</option><option>S3</option>
           </select>
         </div>
       </div>
@@ -465,35 +466,55 @@ const state = {
       notes:''
     },
     {
-      num:'S2', title:'Sesión 2 — borrador para hoy',
-      date:'Hoy', status:'draft',
+      num:'S2', title:'Comunicación con pares, perfiles senior y visibilidad',
+      date:'16 junio 2026', status:'done',
       points:[
-        'Revisar cómo resultó la tarea de los cafés: qué conversaciones tuvo, qué aprendió, qué le resultó difícil.',
-        'Identificar patrones: con quiénes fue más fácil conectar y por qué. Dónde siente más distancia.',
-        'Entrar al objetivo 1: ¿hay alguna conversación pendiente con un par que ya debería haber tenido? ¿Qué la frena?',
-        'Explorar cómo se ve en reuniones con sus pares: ¿escucha, propone, cede, evita? ¿Cómo le gustaría verse?',
-        'Definir un compromiso concreto para antes de la sesión 3.'
+        '— OBJ 1: COMUNICACIÓN CON PARES —',
+        'Hizo la tarea: tuvo los cafés con sus dos stakeholders principales.',
+        'Claudio (Líder de Soporte): conversación amena, cercana y empática. Hablaron primero de temas personales y luego de lo laboral, muy alineado con la forma de trabajar de Feña. Desde esa conversación nota mejor trabajo en equipo.',
+        'Nain (Líder de CS): perfil D en DISC, conversación directa y enfocada en objetivos. Lo más destacable: una semana después fue él quien la volvió a buscar para hablar de mejora de procesos.',
+        'Reflexión trabajada: la comunicación efectiva no requiere cambiar la esencia propia, sino adaptar el estilo según con quién se habla.',
+        'Pendiente para S3: explorar cómo se ve Feña en reuniones con sus pares — si escucha, propone, cede o evita.',
+        '— OBJ 2: POTENCIAR PERFILES SENIOR —',
+        'El equipo tiene 6 personas, ninguna es Senior aún. Revisamos el estado de cada una:',
+        'Cami (Lemonsflow): perfil discreto, trabaja muy bien pero prefiere que no se note. Hay conversación de desarrollo pendiente — Feña siente que tiene que empujarla.',
+        'Yerli (Lemonsflow): volviendo de pre/postnatal, retomando de a poco. No es momento para conversaciones de carrera exigentes.',
+        'Sara (CaseTracking): excelente perfil, usa IA y automatiza todo. En pleno despertar. Riesgo: que llegue a pedir más antes de que se lo ofrezcan. Hay que anticiparse.',
+        'Ambar (CaseTracking): la más antigua. El año pasado tuvo tropiezos en el cómo (no en el qué). Se le asignó un proyecto difícil con un cliente complicado como prueba y lo superó. Tiene aspiraciones de llegar a Senior.',
+        'Javi (CaseTracking): la más junior y nueva, aprendiendo ambos productos. Buena disposición e intención de aprender.',
+        'Ale (CaseTracking): muy buena con clientes, en lo técnico aún en desarrollo. En febrero planteó que su foco son las ventas — en proceso de definir cómo llevar su carrera al área comercial.',
+        '— OBJ 3: VISIBILIDAD DEL ÁREA —',
+        'Está construyendo un dashboard con métricas de alto impacto para presentar en reuniones de comité.',
+        'Tarea asignada: hacer el ejercicio de reconocer al equipo revisando qué ha salido bien y qué no estos últimos meses — sienta las bases de una cultura de mejora continua.'
       ],
       notes:''
     }
   ],
   tasks: [
-    {id:1, desc:'Tomar un café informal con al menos 3 stakeholders clave (sin agenda, solo relacionarse)', resp:'mentee', date:'2026-06-16', objId:0, session:'S1', status:'pending'},
-    {id:2, desc:'Reflexionar sobre cuál de los tres objetivos siente más urgente abordar primero', resp:'mentee', date:'2026-06-16', objId:-1, session:'S1', status:'pending'}
+    {id:1, desc:'Cafés con stakeholders clave — Nain y Claudio', resp:'mentee', date:'2026-06-16', objId:0, session:'S1', status:'done'},
+    {id:2, desc:'Reflexionar sobre cuál de los tres objetivos siente más urgente abordar primero', resp:'mentee', date:'2026-06-16', objId:-1, session:'S1', status:'done'},
+    {id:3, desc:'Dibujar mapa de stakeholders como OB Lead: nivel de influencia propia y áreas de impacto', resp:'mentee', date:'2026-07-01', objId:0, session:'S2', status:'pending'},
+    {id:4, desc:'Dibujar mapa de stakeholders del equipo de Onboarding: dónde puede influir el equipo', resp:'mentee', date:'2026-07-01', objId:0, session:'S2', status:'pending'},
+    {id:5, desc:'Agendar conversación de desarrollo con Cami sobre hacia dónde quiere crecer', resp:'mentee', date:'2026-07-01', objId:1, session:'S2', status:'pending'},
+    {id:6, desc:'Anticipar conversación con Sara antes de que ella llegue pidiendo más', resp:'mentee', date:'2026-07-01', objId:1, session:'S2', status:'pending'},
+    {id:7, desc:'Reconocimiento al equipo: revisar qué ha salido bien y qué no estos últimos meses y comunicarlo', resp:'mentee', date:'2026-07-01', objId:2, session:'S2', status:'pending'},
+    {id:8, desc:'Avanzar en dashboard de métricas de alto impacto para comité', resp:'mentee', date:'2026-07-01', objId:2, session:'S2', status:'pending'}
   ],
   resources: [
     {type:'Libro', title:'Dare to Lead', desc:'Brené Brown — Sobre liderar desde la valentía, tener conversaciones difíciles y construir equipos de alta confianza.', session:'S1'},
     {type:'Libro', title:'The Making of a Manager', desc:'Julie Zhuo — Cómo pasar de ser buena ejecutora a ser una líder que potencia a otros. Muy práctico para líderes nuevas.', session:'S1'},
-    {type:'Tarea', title:'Cafés con stakeholders clave', desc:'Identificar 3 a 5 pares o superiores con quienes tiene menos llegada. Agendar un café informal antes de la sesión 2, sin agenda fija.', session:'S1'}
+    {type:'Tarea S1', title:'Cafés con stakeholders clave', desc:'Agendar cafés informales con Nain y Claudio, sin agenda fija. Objetivo: relacionarse y generar confianza.', session:'S1'},
+    {type:'Tarea S2', title:'Mapa de stakeholders (doble)', desc:'Uno desde su rol como OB Lead (influencia propia) y otro desde el equipo de Onboarding (dónde puede apoyar al equipo a influir).', session:'S2'},
+    {type:'Reflexión S2', title:'Comunicar logros al equipo', desc:'Hacer el ejercicio de felicitar y reconocer al equipo revisando lo que ha salido bien y lo que no estos últimos meses. Sienta las bases de una cultura de mejora continua.', session:'S2'}
   ],
-  chartData: [[20,null,null,null,null,null],[10,null,null,null,null,null],[10,null,null,null,null,null]],
-  taskIdCounter: 3,
+  chartData: [[20,30,null,null,null,null],[10,20,null,null,null,null],[10,20,null,null,null,null]],
+  taskIdCounter: 9,
   currentFilter: 'all'
 };
 
 const OBJ_COLORS = ['#2E7D52','#3A5FA0','#7A4FA0'];
 const OBJ_NAMES_SHORT = ['Com. pares','Perfiles senior','Visibilidad'];
-const SESSIONS = ['S1','S2'];
+const SESSIONS = ['S1','S2','S3','S4','S5','S6','S7','S8','S9','S10','S11','S12'];
 
 // ── TABS ──
 function switchTab(name, btn) {
@@ -739,6 +760,25 @@ function renderObjDetail() {
     card.className = 'obj-detail-card';
     card.id = 'odc-'+i;
     card.style.setProperty('--c', obj.color);
+
+    const rubricFields = [
+      { field:'today', cls:'r-now',  label:'Hoy' },
+      { field:'s1',    cls:'',       label:'1 — comenzando' },
+      { field:'s3',    cls:'',       label:'3 — a la mitad' },
+      { field:'s5',    cls:'',       label:'5 — casi llegando' },
+      { field:'goal',  cls:'r-goal', label:'Meta' }
+    ];
+
+    const rubricHtml = rubricFields.map(({field, cls, label}) => `
+      <div class="r-cell ${cls}">
+        <div class="r-label">${label}</div>
+        <p contenteditable="true"
+           style="outline:none;cursor:text;min-height:38px;border-radius:3px;padding:3px 4px;transition:background 0.15s;white-space:pre-wrap"
+           onfocus="this.style.background='var(--green-50)'"
+           onblur="this.style.background='';state.objectives[${i}]['${field}']=this.innerText.trim()"
+        >${obj[field]}</p>
+      </div>`).join('');
+
     card.innerHTML = `
       <div class="odc-head" onclick="toggleObjDetail(${i})">
         <span class="odc-title">${obj.name}</span>
@@ -746,13 +786,7 @@ function renderObjDetail() {
         <span class="s-chevron" id="odcchev-${i}">&#8964;</span>
       </div>
       <div class="odc-body">
-        <div class="rubric-grid">
-          <div class="r-cell r-now"><div class="r-label">Hoy</div><p>${obj.today}</p></div>
-          <div class="r-cell"><div class="r-label">1 — comenzando</div><p>${obj.s1}</p></div>
-          <div class="r-cell"><div class="r-label">3 — a la mitad</div><p>${obj.s3}</p></div>
-          <div class="r-cell"><div class="r-label">5 — casi llegando</div><p>${obj.s5}</p></div>
-          <div class="r-cell r-goal"><div class="r-label">Meta</div><p>${obj.goal}</p></div>
-        </div>
+        <div class="rubric-grid">${rubricHtml}</div>
         <div class="slider-wrap">
           <label>Ajustar progreso</label>
           <input type="range" min="0" max="100" step="5" value="${obj.progress}" oninput="updateObjProgress(${i},this.value)">
@@ -788,15 +822,31 @@ function updateObjProgress(i, val) {
 function renderResources() {
   const grid = document.getElementById('resourceGrid');
   grid.innerHTML = '';
-  state.resources.forEach(r => {
+  state.resources.forEach((r, ri) => {
     const card = document.createElement('div');
     card.className = 'resource-card';
-    card.innerHTML = `<div class="rc-type">${r.type}</div><div class="rc-title">${r.title}</div><div class="rc-desc">${r.desc}</div><div class="rc-session">Recomendado en ${r.session}</div>`;
+    card.innerHTML = `
+      <div class="rc-type" contenteditable="true"
+        style="outline:none;cursor:text;border-radius:2px;padding:1px 3px;transition:background 0.15s"
+        onfocus="this.style.background='var(--green-50)'"
+        onblur="this.style.background='';state.resources[${ri}].type=this.innerText.trim()"
+      >${r.type}</div>
+      <div class="rc-title" contenteditable="true"
+        style="outline:none;cursor:text;border-radius:3px;padding:1px 3px;transition:background 0.15s"
+        onfocus="this.style.background='var(--green-50)'"
+        onblur="this.style.background='';state.resources[${ri}].title=this.innerText.trim()"
+      >${r.title}</div>
+      <div class="rc-desc" contenteditable="true"
+        style="outline:none;cursor:text;border-radius:3px;padding:1px 3px;transition:background 0.15s;white-space:pre-wrap"
+        onfocus="this.style.background='var(--green-50)'"
+        onblur="this.style.background='';state.resources[${ri}].desc=this.innerText.trim()"
+      >${r.desc}</div>
+      <div class="rc-session">Recomendado en ${r.session}</div>`;
     grid.appendChild(card);
   });
   const add = document.createElement('div');
   add.className = 'resource-card pending-card';
-  add.innerHTML = `<div class="rc-type">Pendiente</div><div class="rc-title">Próximo recurso</div><div class="rc-desc">Se definirá según los avances de la sesión 2.</div>`;
+  add.innerHTML = `<div class="rc-type">Pendiente</div><div class="rc-title">Próximo recurso</div><div class="rc-desc">Se definirá según los avances de la próxima sesión.</div>`;
   grid.appendChild(add);
 }
 function toggleAddResource() {
@@ -816,8 +866,6 @@ function submitResource() {
   toggleAddResource();
   renderResources();
 }
-
-// ── CHART ──
 let chart = null;
 function initChart() {
   const legend = document.getElementById('chartLegend');
